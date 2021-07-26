@@ -80,6 +80,7 @@ class Painter(Widget):
         if DRAGGING == True:
             self.drawLine(pos)
 
+    # отрисовка траектории
     def drawLine(self, mPos):
         # x и y векторы 
         x_vector = self.x1 - mPos[0]
@@ -131,7 +132,7 @@ class Painter(Widget):
         self.canvas.before.remove(self.ellipse)
         self.canvas.after.clear()
 
-        # задавание данных объекту
+        # задание данных объекту
         self.object = Move()
         self.object.create(color=self.color,
                            pos=(((self.x1-i.w)/100)*i.ae, ((self.y1-i.h)/100)*i.ae),
