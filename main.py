@@ -1,8 +1,6 @@
 import interaction as i
 from kivy.app import App
 from kivy.uix.widget import Widget
-import os
-os.environ['KIVY_GL_BACKEND'] = 'sdl2'
 from kivy.core.window import Window
 from kivy.graphics import Ellipse, Color, Line
 from kivy.uix.label import Label
