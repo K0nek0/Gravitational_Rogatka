@@ -29,5 +29,5 @@ def euler_1(n=100, h=1, t=0, N=1, k=.05):
         t_ar.append(t)
     return N_ar, t_ar
     
-plt.plot(euler_1[1], euler_1[0], color='blue')
+plt.plot(euler_1()[1], euler_1()[0], color='blue')
 plt.show()
