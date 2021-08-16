@@ -53,7 +53,7 @@ class Move(Widget):
     def __init__(self):
         super(Move, self).__init__()
         self.counter = 0
-        self.n = i.T
+        self.n = i.t_end
 
     def update(self, dt):
         if self.counter == self.n - 1:
@@ -142,7 +142,6 @@ class Painter(Widget):
 
         global DRAGGING, DRAG_START
         DRAGGING = False
-        # DRAG_END = touch.pos
 
 
 class PlanetApp(App):
