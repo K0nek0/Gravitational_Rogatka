@@ -142,7 +142,6 @@ class Painter(Widget):
 
         global DRAGGING, DRAG_START
         DRAGGING = False
-        DRAG_END = touch.pos
 
 
 class PlanetApp(App):
