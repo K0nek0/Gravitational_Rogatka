@@ -1,4 +1,5 @@
 import interaction as i
+import variables as var
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.core.window import Window
@@ -36,12 +37,12 @@ class Object(Widget):
 
         for j in range(self.step):
             self.COORDS.append(
-                (float(self.interect.solve_func(j)[0])*100+i.w,
-                 float(self.interect.solve_func(j)[1])*100+i.h))
+                (float(self.interect.solve_func(j)[0])*100+var.w,
+                 float(self.interect.solve_func(j)[1])*100+var.h))
 
     def draw(self):
         self.canvas.add(self.color)
-        self.ellipse = Ellipse(pos=self.pos, size=(i.r, i.r))
+        self.ellipse = Ellipse(pos=self.pos, size=(var.r, var.r))
         self.canvas.add(self.ellipse)
 
     def move(self, c):
@@ -53,7 +54,7 @@ class Move(Widget):
     def __init__(self):
         super(Move, self).__init__()
         self.counter = 0
-        self.n = i.t_end
+        self.n = var.t_end
 
     def update(self, dt):
         if self.counter == self.n - 1:
@@ -98,7 +99,7 @@ class Painter(Widget):
         except ZeroDivisionError:
             sin_phi = 0
 
-        v_modul = i.k*vector_modul
+        v_modul = var.k*vector_modul
 
         # скорости
         self.vx = v_modul*cos_phi
@@ -111,13 +112,13 @@ class Painter(Widget):
 
         self.canvas.clear()
         with self.canvas:
-            self.line = Line(points=[DRAG_START[0]+i.r/2, DRAG_START[1]+i.r/2, mPos[0], mPos[1]],
+            self.line = Line(points=[DRAG_START[0]+var.r/2, DRAG_START[1]+var.r/2, mPos[0], mPos[1]],
                              width=1.4)
 
     def on_touch_down(self, touch):
         with self.canvas.before:
             self.color = Color(1, randint(0,1), randint(0,1), 1)
-            self.ellipse = Ellipse(pos=(touch.x, touch.y), size=(i.r, i.r))
+            self.ellipse = Ellipse(pos=(touch.x, touch.y), size=(var.r, var.r))
 
         self.x1 = touch.x
         self.y1 = touch.y
@@ -135,13 +136,15 @@ class Painter(Widget):
         # задание данных объекту
         self.object = Move()
         self.object.create(color=self.color,
-                           pos=(((self.x1-i.w)/100)*i.ae, ((self.y1-i.h)/100)*i.ae),
+                           pos=(((self.x1-var.w)/100)*var.ae, ((self.y1-var.h)/100)*var.ae),
                            vel=(self.vx, self.vy))
         Clock.schedule_interval(self.object.update, .04)
         self.parent.add_widget(self.object)
 
         global DRAGGING, DRAG_START
         DRAGGING = False
+
+        # self.parent.remove_widget(self.object)
 
 
 class PlanetApp(App):
