@@ -9,10 +9,10 @@ from kivy.vector import Vector
 from kivy.clock import Clock
 from random import randint
 
-# from kivy.config import Config
-# Config.set('graphics', 'resizable', 0)
-# Config.set('graphics', 'width', i.w)
-# Config.set('graphics', 'height', i.h)
+from kivy.config import Config
+Config.set('graphics', 'resizable', 0)
+Config.set('graphics', 'width', i.w)
+Config.set('graphics', 'height', i.h)
 
 from kivy.lang import Builder
 Builder.load_file('center.kv')
