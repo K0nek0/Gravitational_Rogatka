@@ -11,8 +11,8 @@ from random import randint
 
 from kivy.config import Config
 Config.set('graphics', 'resizable', 0)
-Config.set('graphics', 'width', i.w)
-Config.set('graphics', 'height', i.h)
+Config.set('graphics', 'width', var.w*2)
+Config.set('graphics', 'height', var.h*2)
 
 from kivy.lang import Builder
 Builder.load_file('center.kv')
@@ -143,7 +143,6 @@ class Painter(Widget):
 
         global DRAGGING, DRAG_START
         DRAGGING = False
-
         # self.parent.remove_widget(self.object)
 
 
