@@ -11,8 +11,8 @@ from random import randint
 
 # from kivy.config import Config
 # Config.set('graphics', 'resizable', 0)
-# Config.set('graphics', 'width', var.w*2)
-# Config.set('graphics', 'height', var.h*2)
+# Config.set('graphics', 'width', var.w)
+# Config.set('graphics', 'height', var.h)
 
 from kivy.lang import Builder
 Builder.load_file('center.kv')
@@ -86,9 +86,11 @@ class Painter(Widget):
         # x и y векторы 
         x_vector = self.x1 - mPos[0]
         y_vector = self.y1 - mPos[1]
-
+        x_c = self.x1 * var.ae
+        y_c = self.y1 * var.ae
         # модуль векторов
         vector_modul = (x_vector**2+y_vector**2)**(1/2)
+        vector_c = (x_c**2+y_c**2)**(1/2)
 
         try:
             cos_phi = x_vector/vector_modul
@@ -109,11 +111,15 @@ class Painter(Widget):
         with self.canvas.after:
             self.label = Label(text=f'Скорость: {int(v_modul)} м/с',
                                pos=(self.x1, self.y1))
+            self.label_center = Label(text=f'Расстояние до центра: {int(vector_c)} м',
+                               pos=(self.x1-20, self.y1-20))
 
         self.canvas.clear()
         with self.canvas:
             self.line = Line(points=[DRAG_START[0]+var.r/2, DRAG_START[1]+var.r/2, mPos[0], mPos[1]],
                              width=1.4)
+            self.line_center = Line(points=[DRAG_START[0]+var.r/2, DRAG_START[1]+var.r/2, 0, 0],
+                             width=1)
 
     def on_touch_down(self, touch):
         with self.canvas.before:
@@ -130,6 +136,7 @@ class Painter(Widget):
     def on_touch_up(self, touch):
         # убирание начальных элементов
         self.canvas.children.remove(self.line)
+        self.canvas.children.remove(self.line_center)
         self.canvas.before.remove(self.ellipse)
         self.canvas.after.clear()
 
@@ -143,6 +150,7 @@ class Painter(Widget):
 
         global DRAGGING, DRAG_START
         DRAGGING = False
+
         # self.parent.remove_widget(self.object)
 
 
