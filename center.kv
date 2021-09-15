@@ -1,7 +1,19 @@
+<CustomLayout>:
+    canvas.before:
+        Color:
+            rgba: 0, 0, 0, 0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
 <Painter>:
     canvas.before:
         Color:
-            rgba: (1, 1, 0, 1)
+            rgba: 1, 1, 0, 1
         Ellipse:
-            pos: 400-25, 300-25
+            pos: 550-25, 1050-25
             size: 50, 50
+    # CustomLayout:
+    #     AsyncImage:
+    #         source:'space.jpg'
+    #         size_hint: 10, 10
