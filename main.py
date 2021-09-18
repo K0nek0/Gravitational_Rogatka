@@ -8,10 +8,8 @@ from kivy.uix.label import Label
 from kivy.vector import Vector
 from kivy.clock import Clock
 from kivy.lang import Builder
-from kivy.uix.floatlayout import FloatLayout
+# from kivy.uix.floatlayout import FloatLayout
 from random import randint
-from kivy.uix.image import Image
-from kivy.properties import ObjectProperty
 
 # from kivy.config import Config
 # Config.set('graphics', 'resizable', 0)
@@ -160,9 +158,8 @@ class Painter(Widget):
 
         # self.parent.remove_widget(self.object)
 
-class CustomLayout(FloatLayout):
-    background_image = ObjectProperty(Image(source='space.jpg'))
-    # pass
+# class CustomLayout(FloatLayout):
+#     pass
 
 class PlanetApp(App):
     def build(self):
