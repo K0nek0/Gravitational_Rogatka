@@ -111,7 +111,7 @@ class Painter(Widget):
         with self.canvas.after:
             self.label = Label(text=f'Скорость: {int(v_modul)} м/с',
                                pos=(self.x1, self.y1))
-            self.label_center = Label(text=f'Расстояние до центра: {int(vector_c)} м',
+            self.label_center = Label(text=f'Расстояние до центра: {(vector_c)} м',
                                pos=(self.x1-20, self.y1-20))
 
         self.canvas.clear()
